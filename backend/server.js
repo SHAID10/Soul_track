@@ -3,6 +3,8 @@ const express = require("express");
 const cors = require("cors");
 const { sequelize } = require("./models");
 const dashboardRoutes = require("./routes/dashboardRoutes");
+const authRoutes = require("./routes/authRoutes");
+const churchRoutes = require("./routes/churchRoutes");
 const errorHandler = require("./middleware/errorHandler");
 
 const app = express();
@@ -13,6 +15,8 @@ app.use(cors());
 
 // Feature routes
 app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/church", churchRoutes);
 
 // Simple health check route to confirm the server is alive
 app.get("/", (req, res) => {
